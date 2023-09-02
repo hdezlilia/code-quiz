@@ -74,8 +74,15 @@ var questions = [
 
 ];
 
-// displays first quiz question
 function startQuiz() {
+    startScreen.classList.add('hide');
+    gameScreen.classList.remove('hide');
+
+    displayNextQuestion();
+}
+
+// displays first quiz question
+function displayNextQuestion() {
     var mainScreen = document.getElementById('mainScreen');
      mainScreen.classList.add('hidden');
      gameScreen.classList.remove('hidden');
@@ -112,10 +119,10 @@ function timer() {
 }
 
 // start quiz timer 
-startBtnEl.addEventListener('click', function() {
-    timer();
-    startQuiz();
-});
+// startButtonEl.addEventListener('click', function() {
+//     timer();
+//     startQuiz();
+// });
 
 
 // stop timer and display grade 
@@ -142,5 +149,7 @@ function saveScore () {
 
     savedScores.push(scoreObj)
 
-    localStorage.setitem
+    localStorage.setitem('scores', JSON.stringify(savedScore))
+    endScreen.classList.toggle('hidden');
 }
+
